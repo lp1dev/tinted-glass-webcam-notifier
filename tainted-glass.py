@@ -6,12 +6,8 @@ from sys import argv
 from time import sleep
 import config
 
-ENCODING="UTF-8"
-PREFIX="/dev/video"
-OUTPUT_LIMIT=50
-
 def     parse_output(stdout, filename):
-  lines = stdout.decode(ENCODING).split('\n')[:-1]
+  lines = stdout.decode(config.encoding).split('\n')[:-1]
   cut_lines = [line.split() for line in lines]
   output = []
   for line in cut_lines[1:]:
@@ -29,10 +25,10 @@ def     lsof(filename):
   completed_process = run(["lsof", filename], stdout=PIPE)
   return parse_output(completed_process.stdout, filename)
 
-def     get_devices(prefix=PREFIX):
+def     get_devices(prefix=config.prefix):
   i = 0
   devices = []
-  while i < OUTPUT_LIMIT:
+  while i < config.output_limit:
     device = "%s%i" %(prefix, i)
     try:
       with open(device):
