@@ -18,7 +18,7 @@ Edit the config.py file according to your own needs
 
 Then run :
    
-`python tainted-glass.py`
+`python tinted-glass.py`
 
 ## Todo
 
