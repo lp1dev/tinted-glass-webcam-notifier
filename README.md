@@ -1,6 +1,6 @@
-# Tainted Glass
+# Tinted Glass
 
-Tainted glass notifies you whenever a program uses the webcam(s) on your computer.
+Tinted glass notifies you whenever a program uses the webcam(s) on your computer.
 
 ## Compatibility
 
