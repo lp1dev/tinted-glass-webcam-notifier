@@ -8,7 +8,7 @@ clean:
 	rm -fr tinted-glass
 
 build:
-	echo "#!"`which python` > tinted-glass
+	echo "#!"`which python3` > tinted-glass
 	cat tinted-glass.py >> tinted-glass
 	chmod +x tinted-glass
 
