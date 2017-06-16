@@ -20,8 +20,14 @@ Then run :
    
 `python tinted-glass.py`
 
+![screencapture](https://raw.githubusercontent.com/lp1dev/tinted-glass-webcam-notifier/master/demo/anim.gif)
+
+![screencapture](https://raw.githubusercontent.com/lp1dev/tinted-glass-webcam-notifier/master/demo/anim.webm)
+
 ## Todo
 
 - Mac OS Compatibility
 - Windows Version
 - Android Version
+
+ 
