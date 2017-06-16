@@ -1,0 +1,12 @@
+[Unit]
+Description=Tinted glass notifies you whenever a software uses the webcam(s) on your computer
+Documentation=https://github.com/lp1dev/tinted-glass-webcam-notifier
+
+[Service]
+ExecStart=/usr/bin/tinted-glass > /var/log/tinted-glass.log 2>&1
+Restart=on-failure
+SuccessExitStatus=3 4
+RestartForceExitStatus=3 4
+
+[Install]
+WantedBy=default.target

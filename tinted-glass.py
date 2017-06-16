@@ -1,13 +1,24 @@
-#!/bin/python
-
 from subprocess import run, PIPE
 from os.path import isfile
 from sys import argv
 from time import sleep
-import config
+import json
+
+CONFIG_FILE="/etc/tinted-glass/config.json"
+CONFIGURATION={}
+
+def     get_config(config_file=CONFIG_FILE):
+  global CONFIGURATION
+  try:
+    with open(CONFIG_FILE) as f:
+      CONFIGURATION = json.loads(f.read())
+  except Exception as e:
+    print(e)
+    exit(-1)
 
 def     parse_output(stdout, filename):
-  lines = stdout.decode(config.encoding).split('\n')[:-1]
+  lines = stdout.decode(CONFIGURATION['encoding']).split('\n')[:-1]
+  print(lines)
   cut_lines = [line.split() for line in lines]
   output = []
   for line in cut_lines[1:]:
@@ -19,16 +30,18 @@ def     parse_output(stdout, filename):
 
 def     notify(text):
   print(text)
-  run(["notify-send", text])
+  run(["/usr/bin/notify-all" ,text])
 
 def     lsof(filename):
   completed_process = run(["lsof", filename], stdout=PIPE)
   return parse_output(completed_process.stdout, filename)
 
-def     get_devices(prefix=config.prefix):
+def     get_devices(prefix=None):
+  if prefix is None:
+    prefix = CONFIGURATION['prefix']
   i = 0
   devices = []
-  while i < config.output_limit:
+  while i < CONFIGURATION['output_limit']:
     device = "%s%i" %(prefix, i)
     try:
       with open(device):
@@ -49,13 +62,14 @@ def	refresh():
 
 def     main():
   if "--daemon" in argv:
-    config.daemonize = True
+    CONFIGURATION['daemonize'] = True
   go_on = True
-  if not config.daemonize:
+  get_config()
+  if not CONFIGURATION['daemonize']:
     return refresh()
   while go_on:
     refresh()
-    sleep(config.refresh_rate)
+    sleep(CONFIGURATION['refresh_rate'])
   return 0
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 # Tinted Glass
 
-Tinted glass notifies you whenever a program uses the webcam(s) on your computer.
+Tinted glass is a daemon to notify the users whenever a program uses the webcam(s) on the machine.
 
 ## Compatibility
 
@@ -11,14 +11,29 @@ Tested on Ubuntu, ArchLinux, should work with most of the GNU/Linux distribution
 - Python 3.4
 - notify-send
 - lsof
+- who
 
+## Install
+
+as root
+
+```
+    make install
+```
+    
 ## Usage
 
-Edit the config.py file according to your own needs
+Edit the /etc/tinted-glass/config.json file according to your own needs
 
-Then run :
+Then run the service :
+
+as root
    
-`python tinted-glass.py`
+`sytemctl start tinted-glass`
+
+To run at startup
+
+`systemctl enable tinted-glass`
 
 ![screencapture](https://raw.githubusercontent.com/lp1dev/tinted-glass-webcam-notifier/master/demo/anim.gif)
 
