@@ -29,7 +29,7 @@ Then run :
 - Android Version
 
  ```
-AlphaRouter
+Tinted Glass
 Copyright (C) 2016 lp1.eu
 
 This program is free software: you can redistribute it and/or modify
