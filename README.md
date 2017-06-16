@@ -22,8 +22,6 @@ Then run :
 
 ![screencapture](https://raw.githubusercontent.com/lp1dev/tinted-glass-webcam-notifier/master/demo/anim.gif)
 
-![screencapture](https://raw.githubusercontent.com/lp1dev/tinted-glass-webcam-notifier/master/demo/anim.webm)
-
 ## Todo
 
 - Mac OS Compatibility
